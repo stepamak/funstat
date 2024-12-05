@@ -1,29 +1,30 @@
 <template>
-  <div class="bg-[#2a2ecd] h-screen w-full">
-    <div class="container mx-auto p-12">
-      <CustomHeader />
-      <ObmankaObiebka v-if="showObmankaObiebka" @close="closeObmakaObiebka" />
-      <!-- <RotatingCubes v-if="showCubes" /> -->
-      <div class="flex gap-5 mt-10 flex-wrap justify-center items-center">
-        <RotatingCube /> <RotatingCube /> <RotatingCube /> <RotatingCube /> <RotatingCube />
-        <RotatingCube /> <RotatingCube /> <RotatingCube /> <RotatingCube /> <RotatingCube />
-        <RotatingCube /> <RotatingCube /> <RotatingCube /> <RotatingCube /> <RotatingCube />
-      </div>
+  <div class="bg-[#2a2ecd] h-full w-full pt-[64px]">
+    <CustomHeader />
+    <!-- <ObmankaObiebka v-if="showObmankaObiebka" @close="closeObmakaObiebka" /> -->
+    <!-- <RotatingCubes v-if="showCubes" /> -->
+     <BlenderCube />
+    <div class="flex justify-center items-center w-[90%]">
+      <FixedFooter />
     </div>
   </div>
 </template>
 
 <script>
-//import RotatingCubes from './components/RotatingCubes.vue'
+import RotatingCubes from './components/RotatingCubes.vue'
+import BlenderCube from './components/BlenderCube.vue';
 import ObmankaObiebka from './components/ObmankaObiebka.vue'
-import RotatingCube from './components/RotatingCube.vue'
+import FixedFooter from './components/FixedFooter.vue';
+//import RotatingCube from './components/RotatingCube.vue'
 import CustomHeader from './components/CustomHeader.vue'
 export default {
   components: {
+    BlenderCube,
     //RotatingCubes,
-    ObmankaObiebka,
-    RotatingCube,
+    // ObmankaObiebka,
+    // RotatingCube,
     CustomHeader,
+    FixedFooter
   },
   data() {
     return {

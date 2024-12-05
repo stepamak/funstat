@@ -1,16 +1,15 @@
 <template>
-  <header class="flex items-center justify-between p-4 bg-[#2a2ecd] border-2 rounded-xl">
-    <div class="logo">
+  <header class="flex items-center w-full justify-between bg-[#2a2ecd] border-[1px] p-6">
+    <div class="logo ml-8">
       <img src="/assets/logo.svg" alt="Logo" class="w-full h-full" />
     </div>
-    <div class="text-white leading-6 font-normal text-[40px] flex gap-5 cursor-pointer">
+    <div class="flex items-center gap-12 mr-14 text-[32px]">
+      <div class="text-white leading-6 font-normal flex gap-5 cursor-pointer">
       <p>About</p>
     </div>
-    <div class="text-white leading-6 font-normal text-[40px] flex gap-5 cursor-pointer">
+    <div class="text-white leading-6 font-normal flex gap-5 cursor-pointer">
       <p>Docs</p>
     </div>
-    <div class="text-white leading-6 font-normal text-[40px] flex gap-5 cursor-pointer">
-      <p>Links</p>
     </div>
   </header>
 </template>
