@@ -1,5 +1,5 @@
 <template>
-  <header class="flex items-center w-full justify-between bg-[#2a2ecd] border-[1px] p-6">
+  <header class="flex items-center w-full justify-between bg-[#2a2ecd] border-[1px] p-0">
     <div class="logo ml-8">
       <img src="/assets/logo.svg" alt="Logo" class="w-full h-full" />
     </div>

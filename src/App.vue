@@ -1,35 +1,43 @@
 <template>
-  <div class="bg-[#2a2ecd] h-full w-full pt-[64px]">
+
+  <body class="bg-[#2a2ecd] h-screen w-full pt-[64px]">
     <CustomHeader />
-    <!-- <ObmankaObiebka v-if="showObmankaObiebka" @close="closeObmakaObiebka" /> -->
-    <!-- <RotatingCubes v-if="showCubes" /> -->
-     <BlenderCube />
-    <div class="flex justify-center items-center w-[90%]">
-      <FixedFooter />
-    </div>
-  </div>
+    <!-- <ObmankaObiebka v-if="showObmankaObiebka" @close="showObmankaObiebka = false"/> -->
+    <ScrollSection :delay="0.5" :y="300">
+      <AboutProject />
+    </ScrollSection>
+    <CardSection />
+    <FixedFooter />
+  </body>
 </template>
 
 <script>
-import RotatingCubes from './components/RotatingCubes.vue'
-import BlenderCube from './components/BlenderCube.vue';
+// import RotatingCubes from './components/RotatingCubes.vue'
 import ObmankaObiebka from './components/ObmankaObiebka.vue'
 import FixedFooter from './components/FixedFooter.vue';
 //import RotatingCube from './components/RotatingCube.vue'
 import CustomHeader from './components/CustomHeader.vue'
+import AboutProject from './components/AboutProject.vue';
+import ScrollSection from './components/ScrollSection.vue';
+import TokenContent from './components/TokenContent.vue';
+import CardSection from './components/CardSection.vue';
 export default {
   components: {
-    BlenderCube,
-    //RotatingCubes,
-    // ObmankaObiebka,
+    // RotatingCubes,
+    ObmankaObiebka,
     // RotatingCube,
     CustomHeader,
-    FixedFooter
+    FixedFooter,
+    AboutProject,
+    ScrollSection,
+    TokenContent,
+    CardSection
   },
   data() {
     return {
       showObmankaObiebka: false,
       showCubes: true,
+      showAbout: false
     }
   },
   mounted() {
@@ -39,6 +47,7 @@ export default {
     closeObmakaObiebka() {
       this.showObmankaObiebka = false
       this.showCubes = true
+      this.showAbout = true
     },
   },
 }

@@ -1,16 +1,30 @@
 <template>
-  <div ref="sceneWrapper" class="h-screen overflow-hidden">
-    <div ref="sceneContainer" class="w-full h-screen"></div>
+  <div class="w-full h-full">
+    <div class="flex flex-wrap">
+      <div class="flex flex-grow">
+        <div ref="sceneContainer" class="w-full h-screen"></div>
+      </div>
+    </div>
   </div>
+  <!-- <div ref="sceneWrapper" class="h-screen overflow-hidden">
+    <div ref="sceneContainer" class="w-full h-screen"></div>
+  </div> -->
 </template>
 
 <script>
 import * as THREE from 'three'
+import { useTokenStore } from '../stores/tokenStore'
 
 export default {
   name: 'RotatingCubes',
+  setup() {
+    return {
+      tokenStore: useTokenStore(),
+    }
+  },
   data() {
     return {
+      address: "7AJ1KjzjstMnQGzZk1HAKx2atmvvRqWvmRbdYmnviryq",
       isRotationComplete: false,
       rotationProgress: 0,
       maxRotation: Math.PI * 2,
@@ -37,30 +51,34 @@ export default {
     this.scene.dispose()
   },
   methods: {
+
     initThree() {
       this.scene = new THREE.Scene()
-      this.scene.background = new THREE.Color('#2a2ecd')
+      this.scene.background = new THREE.Color('#2A2ECD')
 
       const aspect = window.innerWidth / window.innerHeight
-      this.camera = new THREE.PerspectiveCamera(60, aspect, 1, 1000)
-      this.camera.position.z = 5
+      this.camera = new THREE.PerspectiveCamera(60, 2, 0.1, 500)
+      this.camera.position.z = 4
 
       this.renderer = new THREE.WebGLRenderer({ antialias: true })
       this.renderer.setSize(window.innerWidth, window.innerHeight)
       this.$refs.sceneContainer.appendChild(this.renderer.domElement)
     },
-    addCubes() {
+    async addCubes() {
+
       this.cubes = []
       const geometry = new THREE.BoxGeometry(2, 2, 2)
-      const textTexture = this.createTextTexture('текст с апи')
+      const textTexture = this.createTextTexture(this.address)
 
-      const material = new THREE.MeshBasicMaterial({
+      const material = new THREE.MeshStandardMaterial({
         map: textTexture,
-        color: '#a09a9e',
+        color: '#2A2ECD',
+        emissive: '#000000',
         side: THREE.DoubleSide,
-      })
+      });
 
-      const distanceBetweenCubes = 3.5
+
+      const distanceBetweenCubes = 3
 
       for (let i = -1; i <= 1; i++) {
         const cube = new THREE.Mesh(geometry, material)
@@ -119,9 +137,9 @@ export default {
       context.fillRect(0, 0, size, size)
 
       context.fillStyle = '#000000'
-      context.font = '48px Arial'
+      context.font = '20px Arial'
       context.textAlign = 'center'
-      context.textBaseline = 'middle'
+      context.textBaseline = ''
       context.fillText(text, size / 2, size / 2)
 
       const texture = new THREE.CanvasTexture(canvas)
