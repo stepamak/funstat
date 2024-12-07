@@ -1,10 +1,11 @@
 <template>
-  <footer class="flex justify-between w-[100%] bg-[#2a2ecd] p-4 fixed bottom-0 border-[1px] w-full z-20">
+  <footer class="flex justify-between p-4 bottom-0 border-[1px] w-full z-20">
     <div class="flex flex-col justify-center items-center">
       <div class="border-[1px] p-2">
-        <p class="text-white">Online: {{ onlineCounter }}</p> <!-- Changed to onlineCounter -->
+        <span class="text-white">Online: {{ onlineCounter }}</span>
+        <!-- Changed to onlineCounter -->
       </div>
-      <div class="text-white">©️PumpStats 2024</div>
+      <span class="text-white">©️PumpStats 2024</span>
     </div>
     <div class="pupmstat logo">
       <img src="/assets/midLogoFooter.svg" alt="stat" />
@@ -24,17 +25,17 @@ export default {
   name: 'FixedFooter',
   data() {
     return {
-      onlineCounter: 0
+      onlineCounter: 54,
     }
   },
   mounted() {
-    this.getOnline();
+    this.getOnline()
   },
   methods: {
     getOnline() {
-      this.onlineCounter = Math.floor(Math.random() * (55 - 22 + 1)) + 22;
-    }
-  }
+      this.onlineCounter = Math.floor(Math.random() * (55 - 22 + 1)) + 22
+    },
+  },
 }
 </script>
 
